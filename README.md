@@ -8,8 +8,11 @@ Download this: https://raw.githubusercontent.com/Gurky-Kronos/PlexWatchMigrator/
 Edit the file in notepad++ or something with your values below:
 
 OLD_PLEX_TOKEN = "**YOUR OLD TOKEN**"
+
 OLD_PLEX_URL = "**PLEX URL INCLUDING PORT**"
+
 NEW_PLEX_TOKEN = "**YOUR NEW TOKEN**"
+
 NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
 
 python your/directory/tree/plexwatchlist.py
@@ -24,8 +27,11 @@ Download this: https://raw.githubusercontent.com/Gurky-Kronos/PlexWatchMigrator/
 Edit the file in notepad++ or something with your values below:
 
 OLD_PLEX_TOKEN = "**YOUR OLD TOKEN**"
+
 OLD_PLEX_URL = "**PLEX URL INCLUDING PORT**"
+
 NEW_PLEX_TOKEN = "**YOUR NEW TOKEN**"
+
 NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
 
 python3 your/directory/tree/plexwatchlist.py
