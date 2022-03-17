@@ -1,6 +1,8 @@
 # PlexWatchMigrator
 Migrates Plex watch history from one server to another for all users.
 
+I do not take credit for this as I did not make it, I am just uploading it here with instructions so others can use it as well.
+
 **Windows:**
 1. Install python (open command prompt and type python)
 2. pip install plexapi
