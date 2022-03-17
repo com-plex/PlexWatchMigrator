@@ -7,13 +7,13 @@ Migrates Plex watch history from one server to another for all users.
 3. Download this: https://raw.githubusercontent.com/Gurky-Kronos/PlexWatchMigrator/main/plexwatchlist.py
 4. Edit the file in notepad++ or something with your values below:
 
-OLD_PLEX_TOKEN = "**YOUR OLD TOKEN**"
+    OLD_PLEX_TOKEN = "**YOUR OLD TOKEN**"
 
-OLD_PLEX_URL = "**PLEX URL INCLUDING PORT**"
+    OLD_PLEX_URL = "**PLEX URL INCLUDING PORT**"
 
-NEW_PLEX_TOKEN = "**YOUR NEW TOKEN**"
+    NEW_PLEX_TOKEN = "**YOUR NEW TOKEN**"
 
-NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
+    NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
 
 5. python your/directory/tree/plexwatchlist.py
 
@@ -24,13 +24,13 @@ NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
 4. Download this: https://raw.githubusercontent.com/Gurky-Kronos/PlexWatchMigrator/main/plexwatchlist.py
 Edit the file in notepad++ or something with your values below:
 
-OLD_PLEX_TOKEN = "**YOUR OLD TOKEN**"
+    OLD_PLEX_TOKEN = "**YOUR OLD TOKEN**"
 
-OLD_PLEX_URL = "**PLEX URL INCLUDING PORT**"
+    OLD_PLEX_URL = "**PLEX URL INCLUDING PORT**"
 
-NEW_PLEX_TOKEN = "**YOUR NEW TOKEN**"
+    NEW_PLEX_TOKEN = "**YOUR NEW TOKEN**"
 
-NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
+    NEW_PLEX_URL =  "**PLEX URL INCLUDING PORT**"
 
 5. python3 your/directory/tree/plexwatchlist.py
 
