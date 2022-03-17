@@ -37,3 +37,12 @@ Edit the file in notepad++ or something with your values below:
 **Note:** if you don't know how to get the token or url/port use google.
 
 **No support will be offered with this.**
+
+p.s. in order for this to work the libraries must be named exactly the same in the .py file as they are in plex and the users have to have the libraries toggled on in plex.
+
+section_sync = {
+    'Movies': 'Movies',
+    'TV Shows': 'TV Shows', 
+    'Kids TV': 'Kids Tv', 
+    'Anime': 'Anime',
+}
