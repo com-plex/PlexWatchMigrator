@@ -1,16 +1,27 @@
-#pip install plexapi
-
+#python3 -m venv venv
+#source venv/bin/activate
+#pip3 install -r requirements.txt
+ 
+import json
+import requests
+import time
 from plexapi.server import PlexServer
+import os
 
-OLD_PLEX_TOKEN = "YOUR OLD TOKEN"
-OLD_PLEX_URL = "PLEX URL INCLUDING PORT"
-NEW_PLEX_TOKEN = "YOUR NEW TOKEN"
-NEW_PLEX_URL =  "PLEX URL INCLUDING PORT"
+## Change the next two lines
 
+OLD_PLEX_TOKEN = '<Old Plex Token>'
+OLD_PLEX_URL = '<Old Plex URL>'
 old_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
 old_account = old_plex.myPlexAccount()
+
+# Change the next two lines
+
+NEW_PLEX_TOKEN = '<New Plex Token>'
+NEW_PLEX_URL = '<New Plex URL>'
 new_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
 new_account = new_plex.myPlexAccount()
+
 
 #old:new library names. need to be exact. note "Kids Tv" vs "Kids TV"
 #make sure you share libraries on the new server before. otherwise it will error.
@@ -28,13 +39,17 @@ section_sync = {
 def get_user_list(): 
     user_list = {x.title: x.email if x.email else x.title for x in old_plex.myPlexAccount().users() if x.title}
     return user_list
-
+ 
 def parse_guid(guid, guids): 
     x = guid
     if(guids): 
         for i in guids: 
             if(i.id.find('imdb') != -1):
                 x = i.id
+ 
+    # if guid[0:2] == "tt" and guid[2:].isnumeric():
+    #     return "imdb"
+    # x = guid.split("://")[0]
     x = x.replace("com.plexapp.agents.", "")
     x = x.replace("tv.plex.agents.", "")
     x = x.replace("themoviedb", "tmdb")
