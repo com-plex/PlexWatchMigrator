@@ -30,10 +30,9 @@ new_account = new_plex.myPlexAccount()
 #the users don't have access to the libraries
 #
 section_sync = {
-    'Movies': 'Movies',
     'TV Shows': 'TV Shows', 
     'Kids TV': 'Kids Tv', 
-    'Anime': 'Anime',
+    'Anime': 'Anime'
 }
 
 def mark_watched_tv(old_section, new_section):
@@ -49,7 +48,7 @@ def mark_watched_tv(old_section, new_section):
                     ep2.markUnwatched()
                     print(f'Episode marked unwatched - {ep2.seasonEpisode} - {ep2.title}')
                     break
-                
+
 def get_user_list(): 
     user_list = {x.title: x.email if x.email else x.title for x in old_plex.myPlexAccount().users() if x.title}
     return user_list
