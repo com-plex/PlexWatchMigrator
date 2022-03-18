@@ -36,6 +36,20 @@ section_sync = {
     'Anime': 'Anime',
 }
 
+def mark_watched_tv(old_section, new_section):
+    print("Checking: " + old_section.title)
+    for ep in old_section.watched():
+        for ep2 in new_section.episodes():
+            if ep.title == ep2.title:
+                if ep.isWatched:
+                    ep2.markWatched()
+                    print(f'Episode marked watched - {ep2.seasonEpisode} - {ep2.title}')
+                    break
+                else:
+                    ep2.markUnwatched()
+                    print(f'Episode marked unwatched - {ep2.seasonEpisode} - {ep2.title}')
+                    break
+                
 def get_user_list(): 
     user_list = {x.title: x.email if x.email else x.title for x in old_plex.myPlexAccount().users() if x.title}
     return user_list
