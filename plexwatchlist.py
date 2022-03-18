@@ -13,7 +13,11 @@ new_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
 new_account = new_plex.myPlexAccount()
 
 #old:new library names. need to be exact. note "Kids Tv" vs "Kids TV"
-#make sure you share libraries on the new server before. otherwise it will wrror. 
+#make sure you share libraries on the new server before. otherwise it will error.
+#
+#If you get a 401 error it's usually either due to these settings not matching the Plex servers or
+#the users don't have access to the libraries
+#
 section_sync = {
     'Movies': 'Movies',
     'TV Shows': 'TV Shows', 
@@ -70,4 +74,37 @@ if __name__ == "__main__":
                     except Exception as e: 
                         print(f'NOT FOUND - {media.title} - {guid} - {media.guids}')
                         print(e)
-                        pass 
+                        pass
+
+#Sync the owner's watched status as well -- There is probably a better way to do this, but here's what worked for me.
+#This is required because plexapi's users() function doesn't return the admin/owner user for some reason.
+
+    owner_user_id = old_plex.myPlexAccount().username
+    print (owner_user_id)
+
+
+    old_user_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
+    new_user_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
+
+    sections = old_user_plex.library.sections()
+    for old_section in sections: 
+        print(old_section.title)
+        if old_section.title in section_sync:
+            new_section = new_user_plex.library.section(section_sync[old_section.title]) 
+            admin_section = new_plex.library.section(new_section.title)
+
+            for media in old_section.search(unwatched=False):
+                guid = parse_guid(media.guid, media.guids)
+                print(f'{media.title} - {guid} - {media.guids}')
+                try: 
+                    #for the search, we have to use the admin account, otherwise 403
+                    result = admin_section.getGuid(guid)
+                    if(not result):
+                        raise 
+                    #take the MediaItem key returned, pass it into the local user's fetch
+                    found_item = new_section.fetchItem(result.key)
+                    mark_watched_tv(media, found_item)
+                except Exception as e: 
+                    print(f'NOT FOUND - {media.title} - {guid} - {media.guids}')
+                    print(e)
+                    pass
