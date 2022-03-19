@@ -83,23 +83,23 @@ if __name__ == "__main__":
     old_user_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
     new_user_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
 
-        sections = old_user_plex.library.sections()
-        for old_section in sections: 
-            print(old_section.title)
-            if old_section.title in section_sync:
-                new_section = new_user_plex.library.section(section_sync[old_section.title]) 
-                admin_section = new_plex.library.section(new_section.title)
+    sections = old_user_plex.library.sections()
+    for old_section in sections: 
+        print(old_section.title)
+        if old_section.title in section_sync:
+            new_section = new_user_plex.library.section(section_sync[old_section.title]) 
+            admin_section = new_plex.library.section(new_section.title)
 
-                for media in old_section.search(unwatched=False):
-                    guid = parse_guid(media.guid, media.guids)
-                    print(f'{media.title} - {guid} - {media.guids}')
-                    try: 
-                        result = admin_section.getGuid(guid)
-                        if(not result):
-                            raise 
-                        found_item = new_section.fetchItem(result.key)
-                        found_item.markWatched()
-                    except Exception as e: 
-                        print(f'NOT FOUND - {media.title} - {guid} - {media.guids}')
-                        print(e)
-                        pass
+            for media in old_section.search(unwatched=False):
+                guid = parse_guid(media.guid, media.guids)
+                print(f'{media.title} - {guid} - {media.guids}')
+                try: 
+                    result = admin_section.getGuid(guid)
+                    if(not result):
+                        raise 
+                    found_item = new_section.fetchItem(result.key)
+                    found_item.markWatched()
+                except Exception as e: 
+                    print(f'NOT FOUND - {media.title} - {guid} - {media.guids}')
+                    print(e)
+                    pass
