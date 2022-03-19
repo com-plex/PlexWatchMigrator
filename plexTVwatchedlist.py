@@ -1,24 +1,20 @@
-#python3 -m venv venv
-#source venv/bin/activate
-#pip3 install -r requirements.txt
- 
+#pip install plexapi
+#
 import json
 import requests
 import time
 from plexapi.server import PlexServer
 import os
 
-## Change the next two lines
+# Change the next four lines
 
-OLD_PLEX_TOKEN = '<Old Plex Token>'
-OLD_PLEX_URL = '<Old Plex URL>'
+OLD_PLEX_TOKEN = "YOUR OLD TOKEN"
+OLD_PLEX_URL = "PLEX URL INCLUDING PORT"
+NEW_PLEX_TOKEN = "YOUR NEW TOKEN"
+NEW_PLEX_URL =  "PLEX URL INCLUDING PORT"
+
 old_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
 old_account = old_plex.myPlexAccount()
-
-# Change the next two lines
-
-NEW_PLEX_TOKEN = '<New Plex Token>'
-NEW_PLEX_URL = '<New Plex URL>'
 new_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
 new_account = new_plex.myPlexAccount()
 
@@ -112,7 +108,6 @@ if __name__ == "__main__":
 
     owner_user_id = old_plex.myPlexAccount().username
     print (owner_user_id)
-
 
     old_user_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
     new_user_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
