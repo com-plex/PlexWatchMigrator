@@ -1,35 +1,32 @@
-#pip install plexapi
-#
+#!/usr/bin/env python3
+
 import json
 import requests
 import time
 from plexapi.server import PlexServer
 import os
 
-# Change the next four lines
-
+####
+# CONFIGURATION
+####
 OLD_PLEX_TOKEN = "YOUR OLD TOKEN"
 OLD_PLEX_URL = "PLEX URL INCLUDING PORT"
 NEW_PLEX_TOKEN = "YOUR NEW TOKEN"
 NEW_PLEX_URL =  "PLEX URL INCLUDING PORT"
 
-old_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
-old_account = old_plex.myPlexAccount()
-new_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
-new_account = new_plex.myPlexAccount()
-
-
-#old:new library names. need to be exact. note "Kids Tv" vs "Kids TV"
-#make sure you share libraries on the new server before. otherwise it will error.
-#
-#If you get a 401 error it's usually either due to these settings not matching the Plex servers or
-#the users don't have access to the libraries
-#
 section_sync = {
     'TV Shows': 'TV Shows', 
     'Kids TV': 'Kids Tv', 
     'Anime': 'Anime'
 }
+####
+# END CONFIGURATION
+####
+
+old_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
+old_account = old_plex.myPlexAccount()
+new_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
+new_account = new_plex.myPlexAccount()
 
 def mark_watched_tv(old_section, new_section):
     print("Checking: " + old_section.title)
