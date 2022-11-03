@@ -31,7 +31,7 @@ This is a slightly adjusted version of [Gurky-Kronos/PlexWatchMigrator](https://
 
 **macOS/Linux:**
 1. Install Python 3, alongside with pip
-2. Install the required plexapi moddule: `pip install plexapi`
+2. Install the required plexapi module: `pip install plexapi`
 3. Either download both scripts or clone the repository.
 4. Edit the two scripts in your favorite editor and change the values:
    ```
