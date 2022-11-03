@@ -44,6 +44,7 @@ def parse_guid(guid, guids):
 if __name__ == "__main__":
 
     user_list = get_user_list()
+    user_list.pop("Guest")
     for user_id in user_list: 
         print (user_id)
 
