@@ -17,6 +17,9 @@ section_sync = {
 # END CONFIGURATION
 ####
 
+###
+# APPLICATION
+###
 old_plex = PlexServer(OLD_PLEX_URL, OLD_PLEX_TOKEN)
 old_account = old_plex.myPlexAccount()
 new_plex = PlexServer(NEW_PLEX_URL, NEW_PLEX_TOKEN)
@@ -74,9 +77,8 @@ if __name__ == "__main__":
                         print(e)
                         pass
 
-#Sync the owner's watched status as well -- There is probably a better way to do this, but here's what worked for me.
-#This is required because plexapi's users() function doesn't return the admin/owner user for some reason.
-
+    # Sync the owner's watched status as well -- There is probably a better way to do this, but here's what worked for me.
+    # This is required because plexapi's users() function doesn't return the admin/owner user for some reason.
     owner_user_id = old_plex.myPlexAccount().username
     print (owner_user_id)
 

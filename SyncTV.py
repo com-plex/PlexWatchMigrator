@@ -52,10 +52,6 @@ def parse_guid(guid, guids):
         for i in guids: 
             if(i.id.find('imdb') != -1):
                 x = i.id
- 
-    # if guid[0:2] == "tt" and guid[2:].isnumeric():
-    #     return "imdb"
-    # x = guid.split("://")[0]
     x = x.replace("com.plexapp.agents.", "")
     x = x.replace("tv.plex.agents.", "")
     x = x.replace("themoviedb", "tmdb")
@@ -90,11 +86,9 @@ if __name__ == "__main__":
                     guid = parse_guid(media.guid, media.guids)
                     print(f'{media.title} - {guid} - {media.guids}')
                     try: 
-                        #for the search, we have to use the admin account, otherwise 403
                         result = admin_section.getGuid(guid)
                         if(not result):
                             raise 
-                        #take the MediaItem key returned, pass it into the local user's fetch
                         found_item = new_section.fetchItem(result.key)
                         mark_watched_tv(media, found_item)
                     except Exception as e: 
@@ -102,9 +96,8 @@ if __name__ == "__main__":
                         print(e)
                         pass
 
-#Sync the owner's watched status as well -- There is probably a better way to do this, but here's what worked for me.
-#This is required because plexapi's users() function doesn't return the admin/owner user for some reason.
-
+    # Sync the owner's watched status as well -- There is probably a better way to do this, but here's what worked for me.
+    # This is required because plexapi's users() function doesn't return the admin/owner user for some reason.
     owner_user_id = old_plex.myPlexAccount().username
     print (owner_user_id)
 
@@ -122,11 +115,9 @@ if __name__ == "__main__":
                 guid = parse_guid(media.guid, media.guids)
                 print(f'{media.title} - {guid} - {media.guids}')
                 try: 
-                    #for the search, we have to use the admin account, otherwise 403
                     result = admin_section.getGuid(guid)
                     if(not result):
                         raise 
-                    #take the MediaItem key returned, pass it into the local user's fetch
                     found_item = new_section.fetchItem(result.key)
                     mark_watched_tv(media, found_item)
                 except Exception as e: 

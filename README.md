@@ -77,3 +77,11 @@ Guid 'imdb://tt3096858' is not found in the library
 ```
 
 It means that the movie or TV show either does not exist on the destination Plex server or is matched differently. There is nothing that can be done about this, unfortunately, except manually marking them as watched.
+
+**Q: Does this script sync the 'continue watching' stuff?**
+
+Yes. While Plex itself is capable of syncing the watch history across servers, it does not seem to sync the continue watching. PlexWatchMigrator does.
+
+**Q: Is there any support included with this script?**
+
+Perhaps. I won't hold your hand during the migration and I can't make hard promises. However, if this script breaks or fails miserably, please open an issue - I will reply when and if time allows.
